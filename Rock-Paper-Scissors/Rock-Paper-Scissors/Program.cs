@@ -15,17 +15,22 @@ namespace Rock_Paper_Scissors
                 "\nTake 3 points to win." +
                 "\nGood luck!");
 
+            string answer = "Y";
+
+            while (answer == "Y")
+            {
+
             //variables to store the number of victories
             int p = 0;
             int c = 0;
             string[] weapons = { "Rock", "Paper", "Scissors" };
-
+                       
             do
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
 
                 //Console.WriteLine(enemy_weapon);
-
+                
                 Console.WriteLine("\n\n1 - Rock, 2 - Paper, 3 - Scissors" +
                 "\n\nChoose your weapon:");
 
@@ -35,8 +40,15 @@ namespace Rock_Paper_Scissors
 
                 string weapon = Console.ReadLine();
 
-                int index = Convert.ToInt32(weapon);
-                Console.WriteLine("You choose {0}", weapons[index - 1]);
+                try
+                {
+                    int index = Convert.ToInt32(weapon);
+                    Console.WriteLine("You choose {0}.", weapons[index - 1]);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Fail! Please, input 1, 2 or 3.");
+                }
 
                 //matching the weapons
                 switch (weapon)
@@ -61,18 +73,16 @@ namespace Rock_Paper_Scissors
 
                     case "2":
 
-                        //Console.WriteLine("You choose {0}", weapons[index - 1]);
-
-                        if ((weapon == "2") && (enemy_weapon == 1))
+                        if (enemy_weapon == 1)
                         {
                             Console.WriteLine("Computer choose Rock.\nYou WIN!!!");
                             p++;
                         }
-                        else if ((weapon == "2") && (enemy_weapon == 2))
+                        else if (enemy_weapon == 2)
                         {
                             Console.WriteLine("Computer choose Paper too.\nDraw.");
                         }
-                        else if ((weapon == "2") && (enemy_weapon == 3))
+                        else if (enemy_weapon == 3)
                         {
                             Console.WriteLine("Computer choose Scissors.\nYou lose...");
                             c++;
@@ -81,28 +91,22 @@ namespace Rock_Paper_Scissors
 
                     case "3":
 
-                        //Console.WriteLine("You choose {0}", weapons[index - 1]);
-
-                        if ((weapon == "3") && (enemy_weapon == 1))
+                        if (enemy_weapon == 1)
                         {
                             Console.WriteLine("Computer choose Rock.\nYou lose...");
                             c++;
                         }
-                        else if ((weapon == "3") && (enemy_weapon == 2))
+                        else if (enemy_weapon == 2)
                         {
                             Console.WriteLine("Computer choose Paper.\nYou WIN!!!");
                             p++;
                         }
-                        else if ((weapon == "3") && (enemy_weapon == 3))
+                        else if (enemy_weapon == 3)
                         {
                             Console.WriteLine("Computer choose Scissors too.\nDraw.");
                         }
                         break;
 
-                    default:
-
-                        Console.WriteLine("Fail! Please, input 1, 2 or 3.");
-                        break;
                 }
 
             }
@@ -116,8 +120,16 @@ namespace Rock_Paper_Scissors
             else if (c == 3)
                 Console.WriteLine("\nSorry, but you not a winner...\nTry again.");
 
-            Console.ResetColor();
+                 Console.ResetColor();
+                
+                 Console.WriteLine("\nWant to play again?\nEnter 'Y' if you want to conyinue or any another to break.");
 
+                 answer = Console.ReadLine();
+           
+            }
+
+            Console.WriteLine("Thank you for game!\nGood bye!");
+            
             Console.ReadKey();
         }
     }
