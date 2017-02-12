@@ -11,14 +11,14 @@ namespace Rock_Paper_Scissors
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello! This is classic Rock-Paper-Scissors game." +
-                "\nTake 3 points to win." +
-                "\nGood luck!");
-
             string answer = "Y";
 
             while (answer == "Y")
             {
+
+            Console.WriteLine("This is classic Rock-Paper-Scissors game." +
+                              "\nTake 3 points to win." +
+                              "\nGood luck!");
 
             //variables to store the number of victories
             int p = 0;
@@ -125,10 +125,12 @@ namespace Rock_Paper_Scissors
                  Console.WriteLine("\nWant to play again?\nEnter 'Y' if you want to conyinue or any another to break.");
 
                  answer = Console.ReadLine();
+
+                 Console.Clear();
            
             }
 
-            Console.WriteLine("Thank you for game!\nGood bye!");
+            Console.WriteLine("Thank you for game!");
             
             Console.ReadKey();
         }
